@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Playing css with Js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    
+<div class="container text-center" >
+  <h1 class="display-3 font-weight-thicker">Playing with variables and css with <span class="font-weight-bold h1 display-3">JavaScript</span></h1>
+ 
+  <div class="controls"> 
+ 
+    <label for="spacing">Spacing :</label>
+    <input type="range" name="spacing" min="10" max="200" value="10" data-sizing= "px">
+    <label for="blur">Blur :</label>
+    <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+     <label>Base-Color</label>
+     <input type="color" name="base" value="#ffc600">
+    
+</div>
+
+</div>
+<img src="https://images.pexels.com/photos/2438805/pexels-photo-2438805.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="demo-image" width="600" height="400">
+<!------Style------->
+<style>
+body { 
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  
+}
+
+
+:root {
+      --base:#ffc600;
+      --spacing:10px;
+      --blur:10px;
+}
+
+img {
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+    margin:30px 28%;
+
+}
+
+.h1 {
+    color: var(--base);
+}
+
+</style>
+
+
+
+<!-------JavaScript------>
+<script>
+const inputs = document.querySelectorAll("input")   //Selcet all the input tags...
+
+function handleupdate () {
+   // console.log(this.value)
+   const prefix = this.dataset.sizing || '';     //Select the dataset property (sizing)
+   //console.log(this.name);
+   document.documentElement.style.setProperty(`--${this.name}`,this.value + prefix);  //Set the property to documentElement....
+}
+//inputs is an nodelist so use the forEach loop...
+inputs.forEach(input => input.addEventListener('change',handleupdate));
+inputs.forEach(input => input.addEventListener('mousemove',handleupdate));
+
+</script> 
+
+</body>
+</html>
