@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrey-Cardio</title>
+</head>
+<body>
+    
+<!-- Arry objects and its methods -->
+<script>
+
+const information = [
+{first:'Sonu', last:'Sharma', year:'1892',  passed:'2048'},
+{first:'Monu', last:'Kumar', year:'1793',   passed:'2043'},
+{first:'Golu', last:'Yadav', year:'1592',   passed:'2070'},
+{first:'Manish', last:'Tiwari', year:'1890',passed:'2094'},
+{first:'Suresh', last:'Sigh', year:'1497',  passed:'2040'},
+{first:'Deepak', last:'Bhardwaj', year:'1398', passed:'2056'},
+{first:'Manoj' ,last:'kumar', year:'2000', passed:'2078'},
+{first:'Anuj' ,last:'saini', year:'1788', passed:'2090'},
+{first:'Rupender', last:'sigh', year:'1595', passed:'2080'},
+{first:'Narender', last:'shamra', year:'1693', passed:'2098'},
+]
+
+console.table(information);
+
+const flavours = ['Chocolate Chip', 'Kulfi', 'Caramel Praline', 'Chocolate', 'Burnt Caramel', 'Pistachio', 'Rose', 'Sweet Coconut', 'Lemon Cookie', 'Toffeeness', 'Toasted Almond', 'Black Raspberry Crunch', 'Chocolate Brownies', 'Pistachio Almond', 'Strawberry', 'Lavender Honey', 'Lychee', 'Peach', 'Black Walnut', 'Birthday Cake', 'Mexican Chocolate', 'Mocha Almond Fudge', 'Raspberry'];
+
+const people = ['Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William', 'Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton',];
+
+// 1. First Method is Filter()
+const ninteen = information.filter(information=>(information.year>=1995 &&information.year<=2000));
+
+//console.table(ninteen)
+   
+
+ //2. arrey.prototype.map() ///Returms the first name last name ....
+
+ const firstLast = information.map(information =>(`${information.first}  ${information.year}`))
+ console.table(firstLast)
+
+ // 3. ayyay,prototype.sort() -----sort arry with ecah other...
+
+//  const orderd = information.sort(function(a,b) {
+//     if(a.year >b.year) {
+//         return 1;
+//     }else {
+//         -1;
+//     }
+//  })
+
+
+
+const orderd = information.sort((a,b) => a.year > b.year ? 1: -1);
+console.table(orderd);
+
+//4 . Array.prototype.reduce () -----How many informaton lives ?
+//in reduce parameters pass three things 1st.value ,arry,0 soo each time arry goes with each one and cound total year and then add ...
+
+const totalyears = information.reduce((total, information)=> {
+    return total  + (information.passed - information.year);
+},0)
+
+console.table(totalyears);
+
+//sort who lived more ....
+
+const moreage = information.sort(function(a,b) {
+    const lastguy = a.passed - b.year ;
+    const nextguy = b.passed - b.year ;
+    return lastguy>nextguy ? -1:1;
+})
+
+console.table(moreage);
+//  select only if there include the "dv world" ...
+// const category = document.querySelector(".mw -catergory");
+// const links = document.querySelectorAll("a")l
+
+// const dv = links
+//                 .map(link=>link.textContent)
+//                 .filter(name =>name.include('de'));
+// 
+
+
+//Short the alphabetically by last name ....
+
+const alpha = people.sort((lastname,firstname)=> {
+    const[alast,afirst] = lastname.split(", ");
+    const[blast,bfirst] = firstname.split(", ");
+    return alast>blast ? 1 : -1;
+})
+
+console.log(alpha);
+
+//
+
+const data = [
+      'car',
+      'car',
+      'truck',
+      'truck',
+      'bike',
+      'walk',
+      'car',
+      'van',
+      'bike',
+      'walk',
+      'car',
+      'van',
+      'car',
+      'truck'];
+
+    const transport = data.reduce((obj,item) =>{
+      
+      //if(obj[item])? obj[item]++ : obj[item] = 1 ;
+        if(!obj[item]){
+            obj[item] = 0;
+        }
+            obj[item]++;
+            return obj;
+    },{});
+
+    console.log(transport);
+
+
+
+</script>
+    
+</body>
+</html>
