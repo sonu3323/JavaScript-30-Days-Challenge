@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    
+    <form action="" class="search-from">
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+          <li>Filter for a city</li>
+          <li>or a state</li>
+        </ul>
+
+    </form>
+
+<!-- ********JavaScript ********* -->
+    <script>
+     const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    
+        const cities = [];
+
+      //console.log(fetch(endpoint));  //Fecth the data ...
+     fetch(endpoint)
+     .then(bolb=>bolb.json())
+     .then(data=>cities.push(...data));
+
+        //Find the word with matching with Arrey .cities...
+        const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        function findmatchs(wordtomatch , cities) {
+            return cities.filter(place => {
+                const regex = new RegExp(wordtomatch, 'gi');
+                return place.city.match(regex)||place.state.match(regex);
+            })
+        }
+
+      //Display the value and store and then match ...
+
+      function displaymatch() {
+          const matcharry = findmatchs(this.value , cities) 
+          const html = matcharry.map(place => {
+             const regrex = new RegExp(this.value,"gi");
+             const cityname = place.city.replace("regrex",`<span class = "h1"> ${this.value}</span>`);
+             const statename = place.state.replace("regrex",`<span class = "h1"> ${this.value}</span>`)
+             
+             
+             return `
+              <li>
+              <span class="name">${cityname} , ${statename}</span>
+              <span class="population"> ${numberWithCommas(place.population)}</span>
+              </li>`
+          } ) .join('');
+          suggestions.innerHTML = html;
+      }
+
+      const searchinput = document.querySelector('.search');
+      const suggestions = document.querySelector(".suggestions");
+
+      
+      
+      
+      searchinput.addEventListener('change',displaymatch);
+      searchinput.addEventListener('keyup',displaymatch)
+
+
+    </script>
+
+
+</body>
+</html>
