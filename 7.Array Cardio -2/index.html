@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<script>
+
+const people = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 },
+    ];
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen in my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+
+   console.table(people)
+   
+    //Array some() use for check atlest one in the array...
+    //Atleast one person is 19 ??
+    const yr = new Date().getFullYear()
+    const isadult = people.some(({year})=> yr-year>=19);
+    console.log({isadult})
+
+   
+   
+   
+   //    Array.prototype.every check all 19 ??
+   // Returns true if all are the 19...
+
+       const alladult = people.every(({year})=> yr-year>=19);
+       console.log({alladult})
+
+
+//Array.prototype.find()
+//find is like filter but find only returns just the one you are looking for...
+ // find the comment with the ID of 823423
+
+ const commit =comments.find(({id}) => id ===823423);
+ console.log({commit})
+
+
+//Array.prototype.findindex() //use for find the index of array..
+//also delete the index from the array...id = 823423
+
+const findcommt = comments.findIndex(({id})=>id===823423);
+console.log(findcommt)
+
+const newComments = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ];
+    console.table(newComments)
+
+
+
+
+</script>
+
+
+</body>
+</html>
