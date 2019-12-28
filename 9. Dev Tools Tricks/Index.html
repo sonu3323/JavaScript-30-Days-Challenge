@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1 onclick="h1function()">Sonu Sharma</h1>
+
+<script>
+
+const dogs = [
+    {name:'snickers' , age:'8'},
+    {name:'hugo', age:'10'}
+]
+
+
+
+
+const h1 = document.querySelector("h1");
+
+  const h1function=()=> {
+      h1.style.fontSize = "60px";
+      h1.style.color = "red";
+  }
+
+
+// Style any element in the console LOG()...
+console.log('%c this is the demo','font-size:60px; color:red');
+
+// Conosle.error()  It is use for any error to show 
+
+console.error("hey this is error")
+
+//console.info()  It is use show any info type ...
+
+console.info("sun is moon")
+
+
+//console.assert() this is use for testing returns only when wrong..
+
+console.assert(1==2 , "this is wrong")
+
+//cosnole.dir()  This is use for check all the properties of element..
+
+console.dir(h1)
+
+console.clear()
+
+//console.table()  this is use for chack the Array in Table form...
+console.table(dogs)
+
+
+
+// Console.group() This is use for simplyfy the Array ......
+//
+
+dogs.forEach(dogs=> {
+    console.groupCollapsed(`${dogs.name}`)
+    console.log(`Name of the dog is :${dogs.name}`);
+    console.log(`The age of the dog is :${dogs['age']}`);
+    console.groupEnd((`${dogs.name}`))
+})
+
+
+
+
+</script>
+
+    
+</body>
+</html>
