@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+//    ************** Varivbles **********
+     let num1 =100;    //Copy of the values...
+        let num2 =num1;
+        console.log(num2,num1);
+        num1=200;
+        console.log(num1,num2);
+    
+    //Same as with the string ...
+
+        let name1 = "sonu";
+        let name2 = name1;
+        console.log(name1,name2);
+        name1 = "Rahul";
+        console.log(name1,name2)
+    
+        // Array is dynmic means we are change the values:
+        let arry1 = ["sam","ram","shyam","manish","golu","gudu","ramesh" ,"suresh"];
+        
+
+         let b= arry1.forEach((arry,index)=>{
+            
+            return console.log(`${index} : ${arry}`)
+        })
+       
+
+        const obj = { 
+            name: "manish",
+            class : "bca finel year",
+            rollno : "930810010"
+        }
+
+        const obj2 = {...obj}
+
+        obj2.village = "Garhi Ruthal";
+        console.log(obj2.name,obj2.village)
+        console.log(obj)
+       
+
+//Check Arrya or not in Funciton....
+
+        const isArray = val=> Array.isArray(val);
+        
+        console.log(isArray([2,3,4,5]))
+        console.log(isArray('sonu'))
+
+
+
+
+//Clone the Array into another Array 
+    const cp = c => [...c];
+  console.table( cp([3,4,45,6,[4,3,45,6]]));
+
+
+    </script>
+</body>
+</html>
