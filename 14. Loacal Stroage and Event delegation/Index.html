@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+            
+        }
+
+
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="wrapper text-white">
+        <h2 class="text-white">Local Tapas</h2>
+        <p></p>
+
+        <ul class="plates">
+            <li>Loading Tapas</li>
+        </ul>
+        <form class="add-item text-white">
+            <input type="text" name="item" placeholder="Item-Add" required>
+            <input type="submit" value="+ Add Item">
+        </form>
+
+    </div>
+
+<!-- JavaScript Start here... -->
+
+<script>
+
+
+const addItems = document.querySelector('.add-item')
+const itemList = document.querySelector(".plates")
+const items = JSON.parse(localStorage.getItem('items')) ||[];  //get the data in the localstorage...
+
+
+
+function additem(e){
+    e.preventDefault()
+    const text = (document.querySelector("[name=item]")).value;
+    const item = {
+         text,
+         done: false
+     }
+     items.push(item)
+     console.table(items)
+     populateList(items,itemList)
+     localStorage.setItem('items',JSON.stringify(items))  //Store in the LocalStorage.setItem()
+     this.reset();
+}
+
+function populateList(plates = [],plateList) {
+    
+    console.log(plates ,plateList)
+     plateList.innerHTML = plates.map((plate , i)=>{
+         return `
+         <li style="list-style:none;"id="li" >
+         <input type="checkbox" data-index=${i} id="item${i}"} class="checkbox" />
+         <lable for="item${i}" id="lable">${plate.text}</lable>
+         </li>`;
+     }).join("");
+}
+
+addItems.addEventListener("submit",additem)
+populateList(items,itemList)
+
+</script>
+</body>
+
+</html>
