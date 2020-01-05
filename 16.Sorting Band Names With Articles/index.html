@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<style>
+    #bands {
+        list-style: inside square;
+        font-size: 20px;
+        background: white;
+        width: 500px;
+        margin: auto;
+        padding: 0;
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    #bands li {
+        border-bottom: 1px solid #efefef;
+        padding: 20px;
+    }
+
+    #bands li:last-child {
+        border-bottom: 0;
+    }
+
+    a {
+        color: #ffc600;
+        text-decoration: none;
+    }
+</style>
+
+
+<body>
+
+    <ul id="bands">
+        <li>Sonu Sharma</li>
+    </ul>
+
+
+
+    <script>
+        const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean',
+            'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts',
+            'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog']
+
+       function strip(bandsName){
+           return bandsName.replace(/^(a |an |the)/i,'').trim()
+       }
+       console.log(strip("the old dog"))
+       
+        const sortbands = bands.sort((a, b) => {
+            if (strip(a) > strip(b)) {
+                return `1`;
+            } else {
+                return -1;
+            }
+        })
+
+        console.table(sortbands)
+           
+           //Bands list store in the Html......
+
+            $("#bands").html(sortbands.map(band => `<li>${band}</li>`))
+
+    </script>
+
+
+</body>
+
+</html>
